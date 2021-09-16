@@ -29,3 +29,7 @@ services:
       - --collation-server=utf8mb4_unicode_ci
     volumes:
       - ./slave/my.cnf:/etc/mysql/my.cnf
+  test:
+    container_name: test
+    image: centos:7 
+    command: bash
