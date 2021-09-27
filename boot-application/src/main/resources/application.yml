@@ -1,12 +1,12 @@
 spring:
   profiles:
     active: local
-  datasource:
+#  datasource:
     #    url: jdbc:h2:tcp://localhost:1521/querydsl
-    url: jdbc:mysql://127.0.0.1:3306/test?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
-    username: root
-    password: password
-    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3306/test?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+#    username: root
+#    password: password
+#    driver-class-name: com.mysql.cj.jdbc.Driver
   #    driver-class-name: org.h2.Driver
   jpa:
     hibernate:
@@ -16,6 +16,10 @@ spring:
         #        show_sql: true
         format_sql: true
         use_sql_comments: true
+        generate-ddl: false
+        show_sql: false
+        jdbc.lob.non_contextual_creation: true
+        physical_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
     database-platform: org.hibernate.dialect.MySQL8Dialect
   jackson:
     serialization:
@@ -24,3 +28,12 @@ spring:
 logging.level:
   org.hibernate.SQL: debug
   org.hibernate.type: trace
+
+datasource:
+  url: jdbc:mysql://127.0.0.1:3306/test?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+  username: root
+  password: password
+  slave:
+    slave1:
+      name: slave-1
+      url: jdbc:mysql://127.0.0.1:3307/test?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
