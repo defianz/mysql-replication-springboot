@@ -41,6 +41,9 @@ public class InitMember {
                 em.persist(Member.builder().name("member"+i).age(i).team(selectedTeam).build());
             }
 
+
+            em.flush();
+            em.clear();
         }
     }
 }
