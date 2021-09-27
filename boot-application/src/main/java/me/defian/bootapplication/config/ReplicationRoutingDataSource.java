@@ -14,6 +14,9 @@ public class ReplicationRoutingDataSource extends AbstractRoutingDataSource {
     public void setTargetDataSources(Map<Object, Object> targetDataSources) {
         super.setTargetDataSources(targetDataSources);
 
+        for (Object o : targetDataSources.keySet()) {
+            System.out.println("String.valueOf(o) = " + String.valueOf(o));
+        }
         // slave db 정보를 CircularList로 관리
         dataSourceNameList = new CircularList<>(
                 targetDataSources.keySet()

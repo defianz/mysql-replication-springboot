@@ -22,6 +22,7 @@ public class InitMember {
     @PostConstruct
     public void init(){
         initMemberService.init();
+        initMemberService.find();
     }
 
     @Component
@@ -40,10 +41,12 @@ public class InitMember {
                 Team selectedTeam = i % 2 == 0 ? teamA : teamB;
                 em.persist(Member.builder().name("member"+i).age(i).team(selectedTeam).build());
             }
+        }
 
-
-            em.flush();
-            em.clear();
+        @Transactional(readOnly = true)
+        public void find(){
+            Member member = em.find(Member.class, 3L);
+            System.out.println("member = " + member);
         }
     }
 }

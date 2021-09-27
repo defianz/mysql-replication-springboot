@@ -11,9 +11,10 @@ public class CircularList<T> {
     }
 
     public T getOne() {
-        if (counter + 1 >= list.size()) {
-            counter = -1;
-        }
-        return list.get(++counter);
+        //slave 가 한개여서 예외처리
+//        if (counter + 1 >= list.size()) {
+//            counter = -1;
+//        }
+        return list.get(counter);
     }
 }

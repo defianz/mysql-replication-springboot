@@ -18,7 +18,7 @@ public class CustomDataSourceProperties {
 
     @Getter
     @Setter
-    public class Slave {
+    public static class Slave {
         private String name;
         private String url;
     }
